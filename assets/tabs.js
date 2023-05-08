@@ -1,4 +1,4 @@
-fetch('data.json')
+fetch('https://raw.githubusercontent.com/rafanthx13/dev-tool-box/main/assets/tabs.json')
     .then(response => response.json())
     .then(data => createTabs(data))
     .catch(error => console.error('Erro ao carregar os dados:', error));
