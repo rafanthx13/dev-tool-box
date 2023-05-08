@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Copiar Texto</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Copiar Texto</h1>
+    <div class="form-group">
+      <label for="texto1">Texto 1:</label>
+      <textarea class="form-control" id="texto1" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="texto2">Texto 2:</label>
+      <textarea class="form-control" id="texto2" rows="3"></textarea>
+    </div>
+    <button class="btn btn-primary" id="btnCopiar">Copiar</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+
+    function toKebabCase(str) {
+  return str.toLowerCase().replace(/\s+/g, '-');
+}
+
+    $(document).ready(function() {
+      $('#btnCopiar').click(function() {
+        var texto1 = $('#texto1').val();
+        $('#texto2').val(toKebabCase(texto1));
+      });
+    });
+  </script>
+</body>
+</html>

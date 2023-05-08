@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Substituir Strings</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .textarea-container {
+      width: 100%;
+    }
+    
+    .textarea {
+      width: 100%;
+      height: 300px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    
+    .button-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Substituir Strings</h1>
+  
+    <div class="textarea-container">
+      <textarea id="textarea1" class="textarea form-control" rows="10"></textarea>
+    </div>
+    
+    <div class="button-container">
+      <button onclick="substituirStrings()" class="btn btn-primary">Substituir</button>
+    </div>
+    
+    <div class="textarea-container">
+      <textarea id="textarea2" class="textarea form-control" rows="10" readonly></textarea>
+    </div>
+  </div>
+  
+  <script>
+    function substituirStrings() {
+      var textarea1 = document.getElementById('textarea1');
+      var textarea2 = document.getElementById('textarea2');
+      var textoOriginal = textarea1.value;
+      var substituicoes = `
+        string1 = substituicao1
+        string2 = substituicao2
+        string3 = substituicao3
+      `;
+      
+      var substituicoesObj = criarObjetoSubstituicoes(substituicoes);
+      var textoSubstituido = substituirOcorrencias(textoOriginal, substituicoesObj);
+      
+      textarea2.value = textoSubstituido;
+    }
+    
+    function criarObjetoSubstituicoes(substituicoes) {
+      var linhas = substituicoes.trim().split('\n');
+      var substituicoesObj = {};
+      
+      for (var i = 0; i < linhas.length; i++) {
+        var linha = linhas[i].trim();
+        
+        if (linha !== '') {
+          var partes = linha.split('=');
+          var chave = partes[0].trim();
+          var valor = partes[1].trim();
+          
+          substituicoesObj[chave] = valor;
+        }
+      }
+      
+      return substituicoesObj;
+    }
+    
+    function substituirOcorrencias(texto, substituicoes) {
+      for (var chave in substituicoes) {
+        if (substituicoes.hasOwnProperty(chave)) {
+          var valor = substituicoes[chave];
+          var padrao = new RegExp(chave, 'g');
+          texto = texto.replace(padrao, valor);
+        }
+      }
+      
+      return texto;
+    }
+  </script>
+</body>
+</html>
+

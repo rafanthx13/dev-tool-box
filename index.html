@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Relógio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+
+  <style>
+    #clock {
+      font-size: 48px;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .centered {
+      display: flex;
+      justify-content: center;
+    }
+
+    .icon {
+        font-size: 48px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+    .sign {
+        font-size: 24px;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+    .planet {
+        font-size: 18px;
+        vertical-align: middle;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <ul class="nav nav-tabs centered">
+      <li class="nav-item">
+        <a class="nav-link active btn btn-primary" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-primary" href="pages/diff-files-by-line.html">Diff Lines Betwen Texts</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link btn btn-primary" href="pages/kebab-case.html">Kebab Case</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link btn btn-primary" href="pages/lines-in-list-of-strings.html">Lines to List Strings</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link btn btn-primary" href="pages/regra-de-tres-1000.html">Regra de Três</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link btn btn-primary" href="pages/replace-text-by-dict.html">Replace by Dict</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link btn btn-primary" href="pages/tables-from-sql-query">SQL Query Tablle Extractor</a>
+      </li>
+    </ul>
+    <div>
+<!--
+        <span class="icon material-icons">stars</span>
+        <span class="sign">Áries</span>
+        <span class="planet">Marte</span>
+-->
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Informações do Dia</h1>
+
+<!--
+      <div>
+        <strong>Data:</strong> <span id="data"></span>
+      </div>
+      <div>
+        <strong>Signo:</strong> <span id="signo"></span>
+      </div>
+-->
+    </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div id="clock" class="display-1 fw-bold"></div>
+      </div>
+    </div>
+  </div>
+
+   <script>
+
+    function updateTime() {
+      var date = new Date();
+      var options = { timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+      var time = date.toLocaleTimeString('pt-BR', options);
+      document.getElementById('clock').textContent = time;
+    }
+
+    setInterval(updateTime, 1000);
+
+    // ======================
+
+    function obterData() {
+      var dataAtual = new Date();
+      var dia = dataAtual.getDate();
+      var mes = dataAtual.getMonth() + 1;
+      var ano = dataAtual.getFullYear();
+      var dataFormatada = (dia < 10 ? '0' + dia : dia) + '/' + (mes < 10 ? '0' + mes : mes) + '/' + ano;
+      return dataFormatada;
+    }
+
+    function obterSigno(dia, mes) {
+      if ((mes === 1 && dia >= 20) || (mes === 2 && dia <= 18)) {
+        return 'Aquário';
+      } else if ((mes === 2 && dia >= 19) || (mes === 3 && dia <= 20)) {
+        return 'Peixes';
+      } else if ((mes === 3 && dia >= 21) || (mes === 4 && dia <= 19)) {
+        return 'Áries';
+      } else if ((mes === 4 && dia >= 20) || (mes === 5 && dia <= 20)) {
+        return 'Touro';
+      } else if ((mes === 5 && dia >= 21) || (mes === 6 && dia <= 20)) {
+        return 'Gêmeos';
+      } else if ((mes === 6 && dia >= 21) || (mes === 7 && dia <= 22)) {
+        return 'Câncer';
+      } else if ((mes === 7 && dia >= 23) || (mes === 8 && dia <= 22)) {
+        return 'Leão';
+      } else if ((mes === 8 && dia >= 23) || (mes === 9 && dia <= 22)) {
+        return 'Virgem';
+      } else if ((mes === 9 && dia >= 23) || (mes === 10 && dia <= 22)) {
+        return 'Libra';
+      } else if ((mes === 10 && dia >= 23) || (mes === 11 && dia <= 21)) {
+        return 'Escorpião';
+      } else if ((mes === 11 && dia >= 22) || (mes === 12 && dia <= 21)) {
+        return 'Sagitário';
+      } else {
+        return 'Capricórnio';
+      }
+    }
+
+    // Atualiza os elementos HTML com as informações da data e signo
+    function atualizarInformacoesDia() {
+      var data = obterData();
+      var dataElemento = document.getElementById('data');
+      dataElemento.textContent = data;
+
+      var dataAtual = new Date();
+      var dia = dataAtual.getDate();
+      var mes = dataAtual.getMonth() + 1;
+      var signo = obterSigno(dia, mes);
+      var signoElemento = document.getElementById('signo');
+      signoElemento.textContent = signo;
+    }
+
+    atualizarInformacoesDia();
+
+    function getSignAndPlanet() {
+            const signNames = ['Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'];
+            const planetNames = ['Marte', 'Vênus', 'Mercúrio', 'Lua', 'Sol', 'Mercúrio', 'Vênus', 'Plutão', 'Júpiter', 'Saturno', 'Urano', 'Netuno'];
+
+            const date = new Date();
+            const day = date.getDay(); // 0 (Domingo) a 6 (Sábado)
+
+            const sign = signNames[day];
+            const planet = planetNames[day];
+
+            const signElement = document.querySelector('.sign');
+            const planetElement = document.querySelector('.planet');
+
+            signElement.textContent = sign;
+            planetElement.textContent = planet;
+        }
+
+        getSignAndPlanet();
+
+    // Atualiza as informações a cada segundo
+    // setInterval(atualizarInformacoesDia, 10000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>

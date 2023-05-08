@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Transferência de Texto</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .textarea-container {
+      width: 45%;
+      margin: 0 auto;
+    }
+    
+    .textarea {
+      width: 100%;
+      height: 300px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    
+    .button-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Transferência de Texto</h1>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="textarea1">Texto 1:</label>
+          <textarea id="textarea1" class="textarea form-control" rows="10"></textarea>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="textarea2">Texto 2:</label>
+          <textarea id="textarea2" class="textarea form-control" rows="10" readonly></textarea>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="button-container">
+          <button onclick="transferirTexto()" class="btn btn-primary">Transferir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function transferirTexto() {
+      var textarea1 = document.getElementById('textarea1');
+      var textarea2 = document.getElementById('textarea2');
+      var linhas = textarea1.value.split('\n');
+      
+      var novoTexto = '';
+      for (var i = 0; i < linhas.length; i++) {
+        novoTexto += '"' + linhas[i] + '",';
+      }
+      
+      textarea2.value = novoTexto;
+    }
+  </script>
+</body>
+</html>
+

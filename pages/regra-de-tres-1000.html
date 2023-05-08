@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora de Regra de Três</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/autoNumeric/4.7.6/autoNumeric.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculadora de Regra de Três</h1>
+  
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label for="valor1">Valor 1 (g):</label>
+                <input type="text" class="form-control gram" id="valor1" oninput="calcular()">
+              </div>
+              <div class="form-group">
+                <label for="valor2">Valor 2 (R$):</label>
+                <input type="text" class="form-control money" id="valor2" oninput="calcular()">
+              </div>
+              <div class="form-group">
+                <label for="valor3">Valor 3 (g):</label>
+                <input type="text" class="form-control gram" id="valor3" value="1000" readonly>
+              </div>
+              <div class="form-group">
+                <label for="resultado">Resultado (R$/Kg):</label>
+                <input type="text" class="form-control money" id="resultado" readonly>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    $(document).ready(function() {
+      $('.gram').mask('000.000.000.000 g', { reverse: true });
+      $('.money').autoNumeric('init', {
+        aSep: '.',
+        aDec: ',',
+        aSign: 'R$ ',
+        vMin: '-999999999.99',
+        vMax: '999999999.99'
+      });
+    });
+    
+    function calcular() {
+      var valor1 = parseFloat(document.getElementById('valor1').value.replace(" g", "").replace(".", ""));
+      var valor2 = parseFloat(document.getElementById('valor2').value.replace("R$ ", "").replace(".", "").replace(",", "."));
+      
+      if (!isNaN(valor1) && !isNaN(valor2)) {
+        var resultado = (valor2 * 1000) / valor1;
+        document.getElementById('resultado').value = "R$ " + resultado.toFixed(2).replace(".", ",");
+      } else {
+        document.getElementById('resultado').value = '';
+      }
+    }
+  </script>
+</body>
+</html>
+
