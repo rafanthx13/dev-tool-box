@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remover Quebras de Linha</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#btnRemoverQuebras').click(function() {
+                var textoOriginal = $('#textoOriginal').val();
+                var textoResultado = $('#textoResultado');
+
+                // Substitui duas quebras de linha consecutivas por outra coisa (ex: "999")
+                var textoCom999 = textoOriginal.replace(/\n\n/g, "999");
+
+                // Remove todas as quebras de linha individuais
+                var textoSemQuebras = textoCom999.replace(/\n/g, "");
+
+                // Restaura as duas quebras de linha consecutivas
+                var textoFinal = textoSemQuebras.replace(/999/g, "\n\n");
+
+                textoResultado.val(textoFinal);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Remover Quebras de Linha</h1>
+        <div class="form-group">
+            <label for="textoOriginal">Texto Original:</label>
+            <textarea id="textoOriginal" class="form-control" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <button id="btnRemoverQuebras" class="btn btn-primary">Remover Quebras de Linha</button>
+        </div>
+        <div class="form-group">
+            <label for="textoResultado">Texto Resultado:</label>
+            <textarea id="textoResultado" class="form-control" rows="5" readonly></textarea>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerador de INSERT SQL</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function generateSQL() {
+            var csvData = document.getElementById("csvData").value;
+            var insertsTextArea = document.getElementById("insertsTextArea");
+
+            // Limpa o campo de saída
+            insertsTextArea.value = "";
+
+            // Separa as linhas do CSV
+            var rows = csvData.split("\n");
+
+            // Verifica se há pelo menos uma linha
+            if (rows.length < 1) {
+                insertsTextArea.value = "Nenhum dado encontrado.";
+                return;
+            }
+
+            // Separa os cabeçalhos
+            var headers = rows[0].split(";");
+
+            // Remove o cabeçalho do array de linhas
+            rows.shift();
+
+            // Gera os valores para o comando INSERT SQL
+            var values = rows.map(function (row) {
+                var rowValues = row.split(";").map(function (value) {
+                    return "'" + value + "'";
+                });
+                return "(" + rowValues.join(", ").slice(0, -4) + ")";
+            }).join(", ").slice(0, -2) + ')';
+
+            // Gera o comando INSERT SQL completo
+            var insert = "INSERT INTO nome_da_tabela (" + headers.join(", ") + ") VALUES " + values + ";";
+
+            // Exibe o comando INSERT SQL
+            if (values.length > 0) {
+                insertsTextArea.value = insert;
+            } else {
+                insertsTextArea.value = "Nenhum dado válido encontrado.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Gerador de INSERT SQL</h1>
+        <div class="form-group">
+            <label for="csvData">Insira o conteúdo do CSV:</label>
+            <textarea id="csvData" class="form-control" rows="10" cols="50"></textarea>
+        </div>
+        <div class="form-group">
+            <button onclick="generateSQL()" class="btn btn-primary">Gerar SQL</button>
+        </div>
+        <div class="form-group">
+            <label for="insertsTextArea">Comando INSERT SQL:</label>
+            <textarea id="insertsTextArea" class="form-control" rows="10" cols="50" readonly></textarea>
+        </div>
+    </div>
+</body>
+</html>
+
