@@ -1,0 +1,71 @@
+Claro! Aqui está um exemplo de código HTML que utiliza Bootstrap para criar a página conforme as especificações mencionadas:
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CSV Parser</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>CSV Parser</h1>
+
+    <div class="form-group">
+      <label for="csvTextArea">Insira o CSV:</label>
+      <textarea class="form-control" id="csvTextArea" rows="5"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="columnInput">Número da coluna (usa o numero de  a  n, nâo usa nome):</label>
+      <input type="text" class="form-control" id="columnInput">
+    </div>
+
+    <div class="form-group">
+      <label for="outputTextArea">Resultado:</label>
+      <textarea class="form-control" id="outputTextArea" rows="5" readonly></textarea>
+    </div>
+
+    <div class="form-group">
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="quotesSwitch">
+        <label class="custom-control-label" for="quotesSwitch">Colocar entre aspas duplas</label>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="parseCSV()">Processar</button>
+  </div>
+
+  <script>
+    function parseCSV() {
+      var csvText = document.getElementById('csvTextArea').value;
+      var columnNumber = parseInt(document.getElementById('columnInput').value, 10);
+      var useQuotes = document.getElementById('quotesSwitch').checked;
+
+      var lines = csvText.split('\n');
+      var values = [];
+
+      for (var i = 0; i < lines.length; i++) {
+        var columns = lines[i].split(';');
+        if (columns.length >= columnNumber) {
+          var value = columns[columnNumber - 1].trim();
+          if (useQuotes) {
+            value = '"' + value + '"';
+          }
+          if (!values.includes(value)) {
+            values.push(value);
+          }
+        }
+      }
+
+      document.getElementById('outputTextArea').value = values.join(', ');
+    }
+  </script>
+</body>
+
+</html>
+```
+
+Salve o código acima em um arquivo com extensão `.html` e abra-o em um navegador da web para visualizar a página. Aí você poderá inserir o CSV na primeira área de texto, indicar o número da coluna desejada no campo de entrada de texto, ativar ou desativar o switch e, em seguida, clicar no botão "Processar" para gerar a sequência desejada na segunda área de texto.

@@ -15,7 +15,7 @@
                 var textoCom999 = textoOriginal.replace(/\n\n/g, "999");
 
                 // Remove todas as quebras de linha individuais
-                var textoSemQuebras = textoCom999.replace(/\n/g, "");
+                var textoSemQuebras = textoCom999.replace(/\n/g, " ");
 
                 // Restaura as duas quebras de linha consecutivas
                 var textoFinal = textoSemQuebras.replace(/999/g, "\n\n");
