@@ -1,85 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Transferência de Texto</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    
-    h1 {
-      text-align: center;
-    }
-    
-    .textarea-container {
-      width: 45%;
-      margin: 0 auto;
-    }
-    
-    .textarea {
-      width: 100%;
-      height: 300px;
-      padding: 10px;
-      box-sizing: border-box;
-    }
-    
-    .button-container {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sequencia de Números ou Palavras</title>
+  <!-- Link para o Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
-  <div class="container">
-    <h1 class="text-center">Transferência de Texto</h1>
-  
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label for="textarea1">Texto 1:</label>
-          <textarea id="textarea1" class="textarea form-control" rows="10"></textarea>
-        </div>
-      </div>
+  <div class="container mt-5">
+    <h1>Sequência de Números ou Palavras</h1>
+    <div class="form-group">
+		<p>Insira na 1/ text-area uma sequencia de numeros/palavras, uma por linha. Ao apertar o botâo, todas elas vão virar uma só linha (e se ativar o swich, vai por cada uma delas entre aspas duplas). Serve para: Se você tiver um csv e quiser fazer um SELECT ... WHRE  .... IN ... por direto do excel, a coluna que você quer filtra no IN do SQL</p>
+      <label for="sequenceTextArea">Digite a sequência:</label>
+      <textarea class="form-control" id="sequenceTextArea" rows="5"></textarea>
     </div>
-    
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label for="textarea2">Texto 2:</label>
-          <textarea id="textarea2" class="textarea form-control" rows="10" readonly></textarea>
-        </div>
-      </div>
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" id="quotesSwitch">
+      <label class="form-check-label" for="quotesSwitch">Adicionar aspas duplas</label>
     </div>
-    
-    <div class="row">
-      <div class="col-md-12">
-        <div class="button-container">
-          <button onclick="transferirTexto()" class="btn btn-primary">Transferir</button>
-        </div>
-      </div>
-    </div>
+    <button type="button" class="btn btn-primary" onclick="formatSequence()">Formatar</button>
+    <br>
+    <label for="result">Resultado:</label>
+    <textarea class="form-control" id="result" rows="3" readonly></textarea>
   </div>
-  
+
+  <!-- Script para o Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   <script>
-    function transferirTexto() {
-      var textarea1 = document.getElementById('textarea1');
-      var textarea2 = document.getElementById('textarea2');
-      var linhas = textarea1.value.split('\n');
-      
-      var novoTexto = '';
-      for (var i = 0; i < linhas.length; i++) {
-        novoTexto += '"' + linhas[i] + '",';
+    function formatSequence() {
+      const sequenceTextArea = document.getElementById("sequenceTextArea");
+      const quotesSwitch = document.getElementById("quotesSwitch");
+      const resultTextArea = document.getElementById("result");
+
+      let sequence = sequenceTextArea.value.trim().split("\n");
+
+      if (quotesSwitch.checked) {
+        sequence = sequence.map(item => `"${item}"`);
       }
-      
-      textarea2.value = novoTexto;
+
+      const formattedSequence = sequence.join(", ");
+
+      resultTextArea.value = formattedSequence;
     }
   </script>
 </body>
+
 </html>
 
