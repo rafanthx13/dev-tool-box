@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Comparar Textareas</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .textarea-container {
+      width: 100%;
+    }
+    
+    .textarea {
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    
+    .button-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .result-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    
+    .result-container .result-textarea {
+      width: 48%;
+      height: 200px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Comparar Textareas</h1>
+  
+    <div class="textarea-container">
+      <textarea id="textarea1" class="textarea form-control" rows="8"></textarea>
+    </div>
+    
+    <div class="textarea-container">
+      <textarea id="textarea2" class="textarea form-control" rows="8"></textarea>
+    </div>
+    
+    <div class="button-container">
+      <button onclick="compararTextareas()" class="btn btn-primary">Comparar</button>
+    </div>
+    
+    <div class="result-container">
+      <div>
+        <h4>Conteúdo exclusivo da Textarea 1:</h4>
+        <textarea id="textarea3" class="result-textarea form-control" rows="8" readonly></textarea>
+      </div>
+      <div>
+        <h4>Conteúdo exclusivo da Textarea 2:</h4>
+        <textarea id="textarea4" class="result-textarea form-control" rows="8" readonly></textarea>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function compararTextareas() {
+      var textarea1 = document.getElementById('textarea1');
+      var textarea2 = document.getElementById('textarea2');
+      var textarea3 = document.getElementById('textarea3');
+      var textarea4 = document.getElementById('textarea4');
+      
+      var linhas1 = textarea1.value.trim().split('\n');
+      var linhas2 = textarea2.value.trim().split('\n');
+      
+      var exclusivos1 = linhas1.filter(linha => !linhas2.includes(linha));
+      var exclusivos2 = linhas2.filter(linha => !linhas1.includes(linha));
+      
+      textarea3.value = exclusivos1.join('\n');
+      textarea4.value = exclusivos2.join('\n');
+    }
+  </script>
+</body>
+</html>
+

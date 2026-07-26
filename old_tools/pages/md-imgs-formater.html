@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Página com Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Exemplo de Página com Bootstrap</h1>
+
+        <div class="form-group">
+            <label for="textarea1">Text Area 1:</label>
+            <textarea class="form-control" id="textarea1" rows="3" oninput="checkButtonEnabled()"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="inputText">Input Text:</label>
+            <input type="text" class="form-control" id="inputText" oninput="checkButtonEnabled()">
+        </div>
+
+        <div class="form-group">
+            <label for="textarea2">Text Area 2:</label>
+            <textarea class="form-control" id="textarea2" rows="3" readonly></textarea>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="submitButton" onclick="copyTextArea()">Copiar</button>
+    </div>
+
+    <script>
+        function checkButtonEnabled() {
+            var textarea1Value = document.getElementById("textarea1").value.trim();
+            var inputTextValue = document.getElementById("inputText").value.trim();
+            var submitButton = document.getElementById("submitButton");
+
+            submitButton.disabled = (textarea1Value === "" || inputTextValue === "");
+        }
+
+        function copyTextArea() {
+            var textarea1Value = document.getElementById("textarea1").value;
+            var inputTextValue = document.getElementById("inputText").value;
+
+            var replacedText = textarea1Value.replace(/\b(img\S*)\b/g, '$1' + inputTextValue);
+
+            document.getElementById("textarea2").value = replacedText;
+        }
+    </script>
+</body>
+</html>
+

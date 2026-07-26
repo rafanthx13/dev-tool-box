@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Converter Consulta SQL para Diagrama de Fluxo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        function convertSQLToFlowChart() {
+            var sqlQuery = document.getElementById("sqlQuery").value;
+            var mermaidCode = "graph TD;\n";
+            var tables = sqlQuery.match(/(?:from|join)\s+(\S+)/gi);
+
+            if (tables) {
+                var selectItem = "SELECT";
+                mermaidCode += "    " + selectItem + "\n";
+
+                tables = tables.map(function(table) {
+                    return table.replace(/(?:from|join)\s+/i, "");
+                });
+
+                tables.forEach(function(table, index) {
+                    var tableName = table.replace(/(?:.*\.)?(\S+)/i, "$1");
+                    var joinTables = sqlQuery.match(new RegExp(tableName + "\\s+join\\s+(\\S+)", "gi"));
+
+                    mermaidCode += "    " + index + "[" + tableName + "]\n";
+
+                    if (joinTables) {
+                        joinTables = joinTables.map(function(joinTable) {
+                            return joinTable.replace(new RegExp(tableName + "\\s+join\\s+", "i"), "");
+                        });
+
+                        joinTables.forEach(function(joinTable) {
+                            var joinTableName = joinTable.replace(/(?:.*\.)?(\S+)/i, "$1");
+                            var joinCondition = joinTable.replace(/.*on\s+(.*)/i, "$1");
+                            mermaidCode += "    " + index + "--|" + joinCondition + "|>" + tables.indexOf(joinTable) + "\n";
+                        });
+                    }
+                });
+            }
+
+            mermaid.initialize({ startOnLoad: true });
+            mermaid.render("flowchartDiagram", mermaidCode);
+            document.getElementById("mermaidCode").value = mermaidCode;
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Converter Consulta SQL para FlowChart</h2>
+        <div class="form-group">
+            <label for="sqlQuery">Insira a Consulta SQL:</label>
+            <textarea id="sqlQuery" class="form-control" rows="5" cols="50"></textarea>
+        </div>
+        <button onclick="convertSQLToFlowChart()" class="btn btn-primary">Converter</button>
+        <br>
+        <div class="mt-4">
+            <h4>Diagrama de Fluxo Gerado:</h4>
+            <div id="flowchartDiagram"></div>
+        </div>
+        <div class="mt-4">
+            <h4>Código Mermaid:</h4>
+            <textarea id="mermaidCode" class="form-control" rows="5" cols="50" readonly></textarea>
+        </div>
+    </div>
+</body>
+</html>
+

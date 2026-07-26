@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>Agrupador de linhas por tamanho de linha</title>
+	<span>Exemplo de uso: Imagine que você tem uma lsita de cpf e quer pesquisá-los no SQL. Em geral, essa linha vai vir um cpf por linha. Isso fica muito ruim de ver, pois, se forem 400 cpf seu código vai ter 400 linhas. Essa páginas tem a funçâo de jutnar esses 400 cpfs de frma automaizada. Assim, ao inves de ter que apagar cada \n (e ainda não apagar todos porque se nao vai ter uma única linha gigante) esse códdigo vai juntar até ter um tamanho N o que melhora a visibildiade da query</span>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h1>Agrupador de linhas por tamanho de linha</h1>
+
+        <div class="form-group">
+            <label for="inputArray">Texto separado por vírgulas:</label>
+            <textarea class="form-control" id="inputArray" rows="4" placeholder="Insira aqui uma sequência de numeros/strings separadas por vírgula para agrupalas"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="inputSize">Tamanho da linha desejado:</label>
+            <input type="number" class="form-control" id="inputSize" placeholder="Informe o tamanho da linha">
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="agruparLinhas()">Agrupar Linhas</button>
+
+        <div class="form-group mt-4">
+            <label for="outputArray">Texto agrupado por tamanho de linha:</label>
+            <textarea class="form-control" id="outputArray" rows="4" readonly></textarea>
+        </div>
+    </div>
+
+    <script>
+        function agruparLinhas() {
+            var inputText = document.getElementById('inputArray').value;
+            var inputSize = parseInt(document.getElementById('inputSize').value);
+            var inputArray = inputText.split(',');
+
+            var outputArray = [];
+            var currentLine = '';
+
+            for (var i = 0; i < inputArray.length; i++) {
+                var word = inputArray[i].trim();
+
+                if (currentLine.length + word.length <= inputSize) {
+                    currentLine += (currentLine.length > 0 ? ', ' : '') + word;
+                } else {
+                    outputArray.push(currentLine);
+                    currentLine = word;
+                }
+            }
+
+            if (currentLine.length > 0) {
+                outputArray.push(currentLine);
+            }
+
+            document.getElementById('outputArray').value = outputArray.join('\n');
+        }
+    </script>
+</body>
+
+</html>
+

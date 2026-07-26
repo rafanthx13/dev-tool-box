@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta SQL</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Consulta SQL</h2>
+                <textarea id="sqlQuery" class="form-control" rows="5"></textarea>
+                <button id="btnSubmit" class="btn btn-primary mt-2">Executar Consulta</button>
+            </div>
+            <div class="col-md-6">
+                <h2>Tabelas Utilizadas</h2>
+                <ul id="tableList" class="list-group"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.1/dist/sweetalert2.all.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#btnSubmit').click(function() {
+                var sqlQuery = $('#sqlQuery').val();
+                var tableList = extractTables(sqlQuery);
+                displayTables(tableList);
+            });
+
+            function extractTables(sqlQuery) {
+                // Lógica para extrair as tabelas da consulta SQL
+                // Substitua esta parte com a sua implementação real
+
+                // Exemplo de tabela estática
+                var tableList = [];
+                    var regex = /\bFROM\b\s*([\w, ]+)/i;
+                    var match = regex.exec(sqlQuery);
+                    if (match && match.length > 1) {
+                        var tables = match[1].split(',');
+                        tables.forEach(function(table) {
+                            table = table.trim();
+                            if (table.length > 0) {
+                                tableList.push(table);
+                            }
+                        });
+                    }
+                    return tableList;
+            }
+
+            function displayTables(tableList) {
+                var tableHtml = '';
+                tableList.forEach(function(tableName) {
+                    tableHtml += '<li class="list-group-item">' + tableName + '</li>';
+                });
+
+                $('#tableList').html(tableHtml);
+            }
+        });
+    </script>
+</body>
+</html>
