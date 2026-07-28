@@ -2,6 +2,7 @@
 
 import { mdTools } from '../mdTools.js';
 import { htmlToMdTool } from './htmlToMdTool.js';
+import { capsLockFixerTool } from './capsLockFixer.js';
 
 export const tools = [
   {
@@ -975,7 +976,8 @@ export const tools = [
     }
   },
    ...mdTools,
-   htmlToMdTool
+   htmlToMdTool,
+   capsLockFixerTool,
 ];
 
 function escapeHtml(str) {
