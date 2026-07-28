@@ -1,1 +1,5 @@
+---
+icon: database
+---
+
 # SQL EDITOR
