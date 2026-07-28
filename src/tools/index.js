@@ -1,5 +1,7 @@
 // Registro e implementação das ferramentas ativas do dev-tool-box (Vanilla JS)
 
+import { mdTools } from '../mdTools.js';
+
 export const tools = [
   {
     id: 'validador-cpf-cnpj',
@@ -970,7 +972,8 @@ export const tools = [
       });
       setupCopyButton(container, '#copyBlank', '#blankOut');
     }
-  }
+  },
+   ...mdTools,
 ];
 
 function escapeHtml(str) {
