@@ -1,6 +1,6 @@
 // Registro e implementação das ferramentas ativas do dev-tool-box (Vanilla JS)
 
-import { mdTools } from './mdTools.js';
+import { mdTools } from './mdReader.js';
 import { htmlToMdTool } from './htmlToMdTool.js';
 import { capsLockFixerTool } from './capsLockFixer.js';
 
