@@ -2,7 +2,11 @@
 
 ## 🟢 Concluído
 
++ favicon
+
 ## 💡 IDEIAS
+
+=> Continaur em 03/08/2026
 
 + tags do git:
 
@@ -23,10 +27,12 @@
 | `chore`     | Manutenção geral                                                                            |
 
 + Separar ferarmentas em arquivos
-+ Remover pasta assets e considerar remover `old_tools`
 + Melhorar Readme
 + Usar tag e versao do projet (estudar e usarGit flow) além de padronizar ocmo fazer isso (te ruma página apra isso)
 + Markdown Preview (Sustituir stack edit)
 + Diff Checker
 + Regex Tester e princiapis casos
 + JSON Diff
+
++ Melhorar README.md
++ Captalise (quando coloco o capslock acidentalmente)
