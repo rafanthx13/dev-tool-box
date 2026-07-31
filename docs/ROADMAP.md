@@ -17,3 +17,6 @@
 + Regex Tester e pricipais casos
 + JSON Diff
 + Revisar separação de arquivos das ferramentas
++ Editor config
++ https://github.com/rafanthx13/md-toc-generator
++ Melhorar nomes

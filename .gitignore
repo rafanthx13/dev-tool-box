@@ -27,6 +27,7 @@ Thumbs.db
 
 # IDEs e Editores
 .vscode/*
+.codesight/
 .idea/
 *.suo
 *.ntvs*
