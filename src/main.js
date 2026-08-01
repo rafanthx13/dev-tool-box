@@ -36,7 +36,24 @@ const CATEGORY_META = {
 const FALLBACK_META = { icon: 'folder', color: 'indigo' };
 
 function selectTool(id) {
-  activeToolId = id;
+  const newHash = id ? `#${id}` : '';
+  if (window.location.hash !== newHash) {
+    // Atualiza a URL. Isso dispara 'hashchange', que por sua vez chama
+    // applyRouteFromHash() e efetivamente atualiza a tela — única fonte de verdade.
+    window.location.hash = newHash;
+  } else {
+    // Hash já é o mesmo (ex: clicou de novo na ferramenta já ativa) — não dispara
+    // 'hashchange' sozinho, então sincroniza manualmente por garantia.
+    applyRouteFromHash();
+  }
+}
+
+function applyRouteFromHash() {
+  const rawHash = window.location.hash.replace(/^#/, '');
+  const id = rawHash ? decodeURIComponent(rawHash) : null;
+  const toolExists = id !== null && tools.some(t => t.id === id);
+
+  activeToolId = toolExists ? id : null;
   renderNav(document.getElementById('toolSearch')?.value || '');
   renderActiveTool();
 }
@@ -203,6 +220,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  renderNav();
-  renderActiveTool();
+  // Se a URL já vier com um hash (ex: link compartilhado tipo #kebab-case),
+  // abre direto naquela ferramenta. Senão, cai na home (id === null).
+  applyRouteFromHash();
 });
+
+// Sincroniza a tela quando o hash muda por qualquer motivo externo ao selectTool:
+// botão voltar/avançar do navegador, edição manual da URL, ou link colado na mesma aba.
+window.addEventListener('hashchange', applyRouteFromHash);
