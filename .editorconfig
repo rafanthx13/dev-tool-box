@@ -1,0 +1,26 @@
+root = true
+
+# Configurações globais para todos os arquivos
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Configurações específicas para HTML
+[*.html]
+indent_size = 2
+
+# Configurações específicas para CSS e SCSS/SASS (se houver)
+[*.{css,scss,less}]
+indent_size = 2
+
+# Configurações específicas para JavaScript e JSON
+[*.{js,jsx,json}]
+indent_size = 2
+
+# Desativa a remoção de espaços no final de linhas em arquivos Markdown (espaços afetam a quebra de linha)
+[*.md]
+trim_trailing_whitespace = false

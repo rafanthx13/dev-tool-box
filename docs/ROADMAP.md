@@ -8,15 +8,11 @@
 + Markdown Preview (Sustituir stack edit)
 + Ler MD files
 + Caps Lock Corrector
-
++ Separar todas as ferramentas em arquivos
++ Editor config
+  
 ## 💡 IDEIAS
 
-+ Separar todas as em arquivos
 + Usar tag e versao do projet (estudar e usarGit flow) além de padronizar ocmo fazer isso (te ruma página apra isso)
-+ Diff Checker
-+ Regex Tester e pricipais casos
-+ JSON Diff
-+ Revisar separação de arquivos das ferramentas
-+ Editor config
 + https://github.com/rafanthx13/md-toc-generator
 + Melhorar nomes
