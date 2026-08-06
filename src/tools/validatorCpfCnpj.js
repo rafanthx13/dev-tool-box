@@ -2,7 +2,7 @@ import { escapeHtml, setupCopyButton } from '../utils/functions';
 
 export const validatorCpfCnpj = {
   id: "validador-cpf-cnpj",
-  name: "Validador CPF/CNPJ (Zeros no Excel)",
+  name: "Validador CPF/CNPJ",
   category: "Validação & Dados",
   icon: "shield-alert",
   description: "Valida se o Excel removeu zeros à esquerda de CPFs (11 dígitos) ou CNPJs (14 dígitos) e restaura os zeros faltantes.",

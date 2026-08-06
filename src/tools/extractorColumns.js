@@ -2,7 +2,7 @@ import { escapeHtml, setupCopyButton } from "../utils/functions";
 
 export const extractorColumns = {
   id: "extrator-colunas-tabela",
-  name: "Extrator de Colunas (Teams / Tabela)",
+  name: "Extrator de Colunas de tabela",
   category: "Validação & Dados",
   icon: "columns-3",
   description: "Cola tabelas do Teams/Excel e permite extrair e copiar individualmente qualquer coluna desejada.",
