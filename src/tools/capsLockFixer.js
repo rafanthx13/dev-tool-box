@@ -5,6 +5,7 @@ const STORAGE_KEY = 'capsLockFixer:exceptions';
 const DEFAULT_EXCEPTIONS = [
   'CPF', 'CNPJ', 'RG', 'CEP', 'SQL', 'HTML', 'CSS', 'JS',
   'API', 'URL', 'URI', 'HTTP', 'HTTPS', 'JSON', 'XML', 'PDF', 'IA',
+  'PA', 'FOPA', 'GMUD', 'DBA', 'PR'
 ];
 
 function loadExceptions() {

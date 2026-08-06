@@ -13,9 +13,11 @@
 + MD TOC Generator
 + Página inicial
 + Navegação com Hash
-  
++ git and flow md
++ SQL md
++ linux md
++ how doc md
+
 ## 💡 IDEIAS
 
-+ Usar tag e versao do projet (estudar e usarGit flow) além de padronizar ocmo fazer isso (te ruma página apra isso)
-+ gitflow md
-+ SQL md
++ Usar tag e versao do projet (estudar e usar git flow) além de padronizar ocmo fazer isso (ter uma página para isso)

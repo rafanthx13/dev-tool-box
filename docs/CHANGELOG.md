@@ -33,3 +33,7 @@ Todas as mudanças importantes deste projeto serão documentadas neste arquivo.
 + Navegação com Hash
 + Remover área de link externo
   
+## [1.2.1] - 2026-08-05
+
++ Criar e melhorara arquivos markdown: sql, linux, git and githbflow, how docs
++ Mais words para ficar upperCase na tool de UpperCase
