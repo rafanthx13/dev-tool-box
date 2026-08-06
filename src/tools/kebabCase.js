@@ -7,7 +7,7 @@ export const kebabCase = {
   icon: "type",
   description: "Converte frases ou palavras para o formato separado por hífens (kebab-case).",
   render: (container) => {
-    container.innerHTML = `
+    container.innerHTML = /*html*/`
         <div class="space-y-4">
           <h2 class="text-xl font-bold text-slate-100 flex items-center gap-2">
             <i data-lucide="type" class="w-5 h-5 text-indigo-400"></i> Converter para Kebab-Case

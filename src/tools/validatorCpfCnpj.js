@@ -7,7 +7,7 @@ export const validatorCpfCnpj = {
   icon: "shield-alert",
   description: "Valida se o Excel removeu zeros à esquerda de CPFs (11 dígitos) ou CNPJs (14 dígitos) e restaura os zeros faltantes.",
   render: (container) => {
-    container.innerHTML = `
+    container.innerHTML = /*html*/`
         <div class="space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
             <div>

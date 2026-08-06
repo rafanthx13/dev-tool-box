@@ -8,7 +8,7 @@ export const removeBlankLines = {
   description:
     "Remove linhas em branco desnecessárias de um texto, útil para corrigir tabelas Markdown geradas por IA com quebras de linha extras.",
   render: (container) => {
-    container.innerHTML = `
+    container.innerHTML = /*html*/`
         <div class="space-y-4">
           <h2 class="text-xl font-bold text-slate-100 flex items-center gap-2">
             <i data-lucide="eraser" class="w-5 h-5 text-indigo-400"></i> Remover Linhas Vazias

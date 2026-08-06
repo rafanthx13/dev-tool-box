@@ -7,13 +7,13 @@ export const htmlToMdTool = {
     icon: 'clipboard-paste',
     description: 'Cole um texto formatado (negrito, código, listas) copiado de sites como o Claude e converta automaticamente para Markdown puro, sem perder a formatação.',
     render: (container) => {
-      container.innerHTML = `
+      container.innerHTML = /*html*/`
         <div class="space-y-4">
           <h2 class="text-xl font-bold text-slate-100 flex items-center gap-2">
             <i data-lucide="clipboard-paste" class="w-5 h-5 text-indigo-400"></i> Colar como Markdown
           </h2>
           <p class="text-sm text-slate-400">
-            Cole (Ctrl+V) um trecho de texto formatado abaixo — por exemplo, uma resposta do Claude com negrito e código. 
+            Cole (Ctrl+V) um trecho de texto formatado abaixo — por exemplo, uma resposta do Claude com negrito e código.
             Ele já aparece convertido em Markdown puro, pronto pra copiar.
           </p>
 
@@ -29,7 +29,7 @@ export const htmlToMdTool = {
             </div>
           </div>
 
-          <div id="pasteZone" contenteditable="true" 
+          <div id="pasteZone" contenteditable="true"
                class="w-full min-h-[220px] bg-slate-950 border border-slate-800 rounded-lg p-3 text-indigo-300 font-mono text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none whitespace-pre-wrap"
                data-placeholder="Cole (Ctrl+V) o texto formatado aqui...">
           </div>

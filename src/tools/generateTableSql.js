@@ -8,7 +8,7 @@ export const generateTableSql = {
   description:
     "Gera DDL de tabela temporária ou física com id autoincremento e INSERTS a partir de uma lista de valores.",
   render: (container) => {
-    container.innerHTML = `
+    container.innerHTML = /*html*/`
         <div class="space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
             <div>

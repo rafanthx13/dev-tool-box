@@ -60,7 +60,7 @@ export const capsLockFixerTool = {
   render: (container) => {
     let exceptions = loadExceptions();
 
-    container.innerHTML = `
+    container.innerHTML = /*html*/`
       <div class="space-y-4">
         <h2 class="text-xl font-bold text-slate-100 flex items-center gap-2">
           <i data-lucide="case-sensitive" class="w-5 h-5 text-indigo-400"></i> Corretor de Caps Lock

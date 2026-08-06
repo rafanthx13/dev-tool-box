@@ -8,7 +8,7 @@ export const sqlExtractor = {
   description:
     "Extrai os nomes de tabelas utilizadas nas cláusulas FROM e JOIN de uma consulta SQL.",
   render: (container) => {
-    container.innerHTML = `
+    container.innerHTML = /*html*/`
         <div class="space-y-4">
           <h2 class="text-xl font-bold text-slate-100 flex items-center gap-2">
             <i data-lucide="database" class="w-5 h-5 text-indigo-400"></i> Extrair Tabelas de Consulta SQL

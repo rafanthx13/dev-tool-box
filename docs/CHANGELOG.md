@@ -35,5 +35,6 @@ Todas as mudanças importantes deste projeto serão documentadas neste arquivo.
   
 ## [1.2.1] - 2026-08-05
 
-+ Criar e melhorara arquivos markdown: sql, linux, git and githbflow, how docs
++ Criar e melhorara arquivos markdown: sql, linux, git and githbflow, how docs, vscode
 + Mais words para ficar upperCase na tool de UpperCase
++ Aplciar highlight em tempalte strings js

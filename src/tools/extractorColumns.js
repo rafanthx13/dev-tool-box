@@ -7,7 +7,7 @@ export const extractorColumns = {
   icon: "columns-3",
   description: "Cola tabelas do Teams/Excel e permite extrair e copiar individualmente qualquer coluna desejada.",
   render: (container) => {
-    container.innerHTML = `
+    container.innerHTML = /*html*/`
         <div class="space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
             <div>

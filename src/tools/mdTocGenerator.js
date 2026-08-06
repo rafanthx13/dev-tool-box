@@ -77,7 +77,7 @@ export const mdTocGenerator = {
   icon: 'list-tree',
   description: 'Cole um texto em Markdown e gere automaticamente o índice (Table of Contents) com base nos headings (# ## ###), com links âncora e indentação por nível.',
   render: (container) => {
-    container.innerHTML = `
+    container.innerHTML = /*html*/`
       <div class="space-y-4">
         <h2 class="text-xl font-bold text-slate-100 flex items-center gap-2">
           <i data-lucide="list-tree" class="w-5 h-5 text-indigo-400"></i> Gerador de Índice (TOC) Markdown

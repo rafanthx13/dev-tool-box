@@ -58,7 +58,7 @@ export const htmlReplaceEntities = {
         { char: 'Ñ', entity: '&Ntilde;', num: '&#209;', desc: 'N til maiúsculo' },
       ];
 
-      container.innerHTML = `
+      container.innerHTML = /*html*/`
         <div class="space-y-6">
           <div class="flex items-center justify-between">
             <h2 class="text-xl font-bold text-slate-100 flex items-center gap-2">
@@ -117,9 +117,9 @@ export const htmlReplaceEntities = {
       const renderTable = (filter = '') => {
         const tbody = container.querySelector('#entityTableBody');
         const search = filter.toLowerCase().trim();
-        const filtered = entitiesData.filter(d => 
-          d.char.toLowerCase().includes(search) || 
-          d.entity.toLowerCase().includes(search) || 
+        const filtered = entitiesData.filter(d =>
+          d.char.toLowerCase().includes(search) ||
+          d.entity.toLowerCase().includes(search) ||
           d.desc.toLowerCase().includes(search)
         );
 

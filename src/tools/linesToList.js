@@ -8,7 +8,7 @@ export const linesToList = {
   description:
     "Transforma linhas em uma lista separada por vírgulas, com opção de aspas para usar na cláusula WHERE IN (...).",
   render: (container) => {
-    container.innerHTML = `
+    container.innerHTML = /*html*/`
         <div class="space-y-4">
           <h2 class="text-xl font-bold text-slate-100 flex items-center gap-2">
             <i data-lucide="list-ordered" class="w-5 h-5 text-indigo-400"></i> Sequência de Números / Palavras para SQL IN
