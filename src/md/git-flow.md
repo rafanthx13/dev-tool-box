@@ -499,3 +499,76 @@ Para a maioria dos projetos (inclusive um monólito Laravel como o que você est
 - A branch pode ter quantos commits fizerem sentido durante o desenvolvimento.
 - O Pull Request continua mostrando todo esse histórico para revisão.
 - A `main` permanece limpa, com **um commit por feature, correção ou refatoração**, facilitando entender a evolução do projeto e navegar pelo histórico.
+
+## Como implantar na prática
+
+1 - Crie a brancha apartor de main e organizae a nova brnahc aparotr do seguinte
+
+| Tipo        | Exemplo                     |
+| ----------- | --------------------------- |
+| `feature/`  | `feature/task-export`       |
+| `fix/`      | `fix/login-validation`      |
+| `refactor/` | `refactor/user-service`     |
+| `docs/`     | `docs/versioning`           |
+| `test/`     | `test/login`                |
+| `chore/`    | `chore/update-dependencies` |
+| `ci/`       | `ci/github-actions`         |
+| Extra       |                             |
+| `content/`  | Conteúdo como md            |
+
+Fluxo Completo
+
+````txt
+main
+ │
+ ├── feature/login
+ │      │
+ │      ├── feat: criar tela
+ │      ├── feat: autenticação
+ │      ├── test: adicionar testes
+ │      └── fix: corrigir review
+ │
+ │      ↓
+ │   Pull Request
+ │
+ │      ↓
+ │ Rebase and Merge
+ │
+ └────────────────────────► main
+````
+
+ Na pratica
+
+````sh
+git switch main # troca pra main
+git pull origin main # atualiza a main
+git switch -c feature/login # troca pra branch apartir da main atualizada
+git push -u origin feature/login # sobe as alteraçoes
+# Atualizar sua branch durante o desenvovilemto
+git fetch origin
+
+git rebase origin/main
+````
+
+Configurar repo?
+
+- Pull Request: Marque o tipo de pullrequest que vai aceitar
+    - ❌ Merge commits
+    - ✅ Rebase merging
+    - ❌ Squash merging
+
+Branch protection
+
+Mesmo sendo um projeto pessoal, eu protegeria a main.
+
+Em Settings → Branches → Branch protection rules, configure:
+
+- exigir Pull Request antes de fazer merge;
+- impedir push direto na main;
+- exigir que a branch esteja atualizada antes do merge (opcional, mas recomendado).
+
+Assim você se acostuma com o mesmo fluxo usado em muitos projetos profissionais.
+
+Como fazer
+
+1- em `/settings` no mei da págian tem uma seçao de pull reuqest
