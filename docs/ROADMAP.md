@@ -17,7 +17,8 @@
 + SQL md
 + linux md
 + how doc md
++ sql formatter
++ estudar e usar github flow e aplicar isso no projeto
 
 ## 💡 IDEIAS
 
-+ Usar tag e versao do projet (estudar e usar git flow) além de padronizar ocmo fazer isso (ter uma página para isso)
