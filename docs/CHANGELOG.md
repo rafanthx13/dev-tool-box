@@ -38,3 +38,9 @@ Todas as mudanças importantes deste projeto serão documentadas neste arquivo.
 + Criar e melhorara arquivos markdown: sql, linux, git and githbflow, how docs, vscode
 + Mais words para ficar upperCase na tool de UpperCase
 + Aplciar highlight em tempalte strings js
+
+## [1.3.0] - 2026-08-05
+
++ Iniciar links e docker .md
++ feat: SQL Formatter personalizado
++ Atualizar dependências
