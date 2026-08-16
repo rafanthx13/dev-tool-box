@@ -4,6 +4,9 @@
 
 es6-string-html: aplica hightlight em uma tamplate stirng no js se antes dela tiver \/\*html\*\/`
 
+formulahendry.auto-rename-tag: Renomea tag html de forma mais simples, ao editar uma edita a outra automacitmanete
+
+
 ## Sugestão de extensões
 
 aaron-bond.better-comments
@@ -121,82 +124,3 @@ yoavbls.pretty-ts-errors
 yzane.markdown-pdf
 yzhang.markdown-all-in-one
 zobo.php-intellisense
-
-## Snippets PHP
-
-````json
-{
- // Place your snippets for php here. Each snippet is defined under a snippet name and has a prefix, body and 
- // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
- // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
- // same ids are connected.
- // Example:
- // "Print to console": {
- //  "prefix": "log",
- //  "body": [
- //   "console.log('$1');",
- //   "$2"
- //  ],
- //  "description": "Log output to console"
- // }
- "Debugar variavel": {
-  "prefix": "echo_var",
-  "body": [
-    "echo(\"<br>VAR :: ${1:element} ==> \"); var_dump($${1:element}); echo(\"<br>\");"
-  ],
-  "description": "Debugar variavel"
- },
- "Mostra que passou aqui": {
-  "prefix": "show_echo",
-  "body": [
-    "echo(\"<br>Passou aqui :: ${1:element} <br> \");"
-  ],
-  "description": "Se passou por ali"
- },
- "Passou + Log": {
-  "prefix": "show_log",
-  "body": [
-    "echo(\"<br>Passou aqui :: ${1:element} <br> \"); error_log(\"${1:element}\");"
-  ],
-  "description": "Se passou por ali"
- },
- "Show obj": {
-  "prefix": "show_obj",
-  "body": [
-    "echo(\"<br>Passou aqui :: ${1:element} <br> \"); print_r(get_object_vars($${1:element}),true);"
-  ],
-  "description": "Se passou por ali"
- },
- "Print Array Vertical" : {
-  "prefix": "print_array",
-  "body": "echo(\"${1:element} :: <br><pre>\".print_r($${1:element},true).\"</pre><br>\");",
-  "description": "Printa array"
- 
- },
- "error log twice" : {
-  "prefix": "errlog",
-  "body": "error_log(\"${1:element}\"); error_log($${1:element});",
-  "description": "Printa array"
- },
- "error log twice to array" : {
-  "prefix": "erralog",
-  "body": "error_log(\"${1:element}\"); error_log(print_r($${1:element},true));",
-  "description": "Printa array"
- },
- "ultra log": {
-  "prefix": "ultlog",
-  "body": "echo(\"<br>VAR :: ${1:element} ==> \"); var_dump($${1:element}); echo(\"<br>\"); error_log(\"${1:element}\"); error_log($${1:element});",
-  "description": "sai log"
- },
- "ultra log array": {
-  "prefix": "ultarr",
-  "body": "echo(\"${1:element} :: <br><pre>\".print_r($${1:element},true).\"</pre><br>\"); error_log(\"${1:element}\"); error_log(print_r($${1:element},true));",
-  "description": "sai log"
- },
- "ultra log obj": {
-  "prefix": "ultobj",
-  "body": "echo(\"${1:element} :: <br><pre>\".print_r(get_object_vars($${1:element}),true).\"</pre><br>\"); error_log(\"${1:element}\"); error_log(print_r(get_object_vars($${1:element}),true));",
-  "description": "sai log"
- },
-}
-````

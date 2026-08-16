@@ -17,6 +17,8 @@ git merge
 
 ## Conventional Commits
 
+Extendido para meu uso:
+
 | Tipo        | Significado                                                                                 |
 | ----------- | ------------------------------------------------------------------------------------------- |
 | `feat`      | Nova funcionalidade relevante (nova ferramenta, página, módulo, API, componente importante) |
@@ -24,14 +26,34 @@ git merge
 | `change`    | Altera um comportamento ou uma regra existente de forma intencional                         |
 | `fix`       | Corrige um bug ou comportamento incorreto                                                   |
 | `refactor`  | Reorganiza o código sem alterar o comportamento                                             |
-| `perf`      | Melhora o desempenho                                                                        |
+| `perf`      | Melhora o desempenho de alguma funcionalidade                                                                      |
 | `style`     | Alterações visuais (CSS, Tailwind, layout, animações)                                       |
 | `codestyle` | Formatação do código (Prettier, ESLint `--fix`, indentação, organização de imports)         |
 | `docs`      | Documentação                                                                                |
-| `test`      | Testes                                                                                      |
-| `build`     | Build, bundler, dependências de build                                                       |
+| `test`      | Criação ou ajuste de testes                                                                 |
+| `build`     | Build, bundler, add/remover/update dependências externas (Dockerfile, package.json)                 |
 | `ci`        | Pipeline (GitHub Actions, Azure DevOps...)                                                  |
-| `chore`     | Manutenção geral                                                                            |
+| `chore`     | Manutenção geral: (Ex: Limpar, mudar ou renomea arquivo, gitignore, editorconfig)                                                                            |
+| `content`   | Criação ajuste de arquivo `.md` como artigo de contéudo/blog                                |
+| `security`       | Fechar brecha de segurança (x: Header HTTP, sanetizar, validaçao aprimorada)                                |
+
+Formato:
+
+````
+tipo(escopo): descrição curta
+````
+
+A descrição vem depois de ``:``, normalmente em **minúsculas**, no imperativo na 3ª pessoa e sem ponto final.
+
+### Exemplos
+
+````
+test(tasks): adiciona testes de criação e movimentação
+fix(notes): preserva posição da página ao editar Markdown
+fix(tasks): impede cópia duplicada do dia anterior
+ci: compila o Vite antes dos testes
+docs: documenta regra de cópia única de tarefas
+````
 
 ## GitHub Flow
 
@@ -572,3 +594,51 @@ Assim você se acostuma com o mesmo fluxo usado em muitos projetos profissionais
 Como fazer
 
 1- em `/settings` no mei da págian tem uma seçao de pull reuqest
+
+# Tag e Release
+
++ tag é SemVer com o `v` na frente
+   + Exemplo: `v2.0.0`
++ O nome da release começa com a tg e tem um nome descritivo ou até mesmo codimnomoo u não tem
+  + Exemplo: `v2.0.0.`
+  + Exemplo: `v2.0.0 - DockerCompose`
+  + Exemplo: `v2.0.0 - Sunrise`
+
+O padrão mais usado é o **Semantic Versioning**: `MAJOR.MINOR.PATCH`
+
+-   `PATCH` (v1.0.**1**) → bugfix pequeno
+-   `MINOR` (v1.**1**.0) → funcionalidade nova, sem quebrar nada
+-   `MAJOR` (**2**.0.0) → mudança grande que quebra compatibilidade
+
+# Página do Repositório do Github
+
+Mas há várias melhorias que você pode fazer na **página do repositório** (não no código).
+
+**1\. Description e Website (campo "About")** No lado direito da página, aparece _"No description, website, or topics provided."_ — esse é um dos primeiros campos que as pessoas olham. Clique na engrenagem ⚙️ ao lado de "About" e preencha:
+
+-   **Description:** uma frase curta tipo _"Personal daily task tracker with Kanban, time management and analytics"_
+-   **Website:** se você tiver um deploy rodando (Fly.io, Railway, etc.), coloque aqui. Se não tiver, pode deixar em branco.
+
+**2\. Topics (tags do repositório)** Ainda no "About", adicione **topics** como: `laravel`, `php`, `kanban`, `productivity`, `tailwindcss`, `sqlite`, `docker`. Isso faz o repositório aparecer em buscas do GitHub e dá contexto visual imediato.
+
+**3\. README — Badges** Badges no topo do README passam credibilidade e informação rápida. Exemplos úteis para o seu projeto:
+
+-   Versão do PHP/Laravel
+-   Licença
+-   Último commit
+
+O site [shields.io](https://shields.io/) gera qualquer badge. Exemplo para Laravel:
+
+```markdown
+![Laravel](https://img.shields.io/badge/Laravel-12-red?logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8\.2+-blue?logo=php)
+```
+
+**4\. Licença** O repositório não tem arquivo de licença. Mesmo sendo pessoal, adicionar um `LICENSE` (MIT é o mais comum) é boa prática e o GitHub até exibe um aviso que falta. Você pode criar direto pelo GitHub: _Add file → Create new file → escreva `LICENSE`_ e ele oferece templates prontos.
+
+**5\. GitHub Issues para o backlog (opcional)** Você tem um `NEXT.md` com o que falta fazer — isso é ótimo. Uma melhoria é migrar esse backlog para **GitHub Issues**, pois dá para organizar com labels (`enhancement`, `bug`, `todo`), milestones e até usar o **GitHub Projects** (kanban nativo do GitHub) para gerenciar — irônico para um app de kanban 😄
+
+**6\. Releases** Quando você considerar o projeto "funcional", crie uma **Release** (v0.1.0 por exemplo). Vai aparecer na sidebar e dá uma sensação de progresso e versionamento. CCriada manualmente após deploy.
+
+**7\. GitHub Actions (CI) e com testes** Como você já tem `phpunit.xml`, dá para configurar um workflow simples que roda os testes automaticamente a cada push. É gratuito para repositórios públicos e mostra um badge verde de "tests passing" no README.
+
