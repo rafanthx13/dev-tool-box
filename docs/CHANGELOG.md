@@ -44,3 +44,7 @@ Todas as mudanças importantes deste projeto serão documentadas neste arquivo.
 + Iniciar links e docker .md
 + feat: SQL Formatter personalizado
 + Atualizar dependências
+
+## [1.4.0] - 2026-08-05
+
++ feat: Ordenador e removedor de linhas duplicadas

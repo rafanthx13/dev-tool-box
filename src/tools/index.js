@@ -13,6 +13,7 @@ import { sqlExtractor } from './sqlExtractor.js'
 import { removeBlankLines } from './removeBlankLines.js'
 import { mdTocGenerator } from './mdTocGenerator.js'
 import { sqlFormatter } from './sqlFormatter.js';
+import { organizeList } from './organizeList.js';
 
 export const tools = [
     validatorCpfCnpj,
@@ -27,6 +28,7 @@ export const tools = [
    capsLockFixerTool,
    removeBlankLines,
    mdTocGenerator,
-   sqlFormatter
+   sqlFormatter,
+   organizeList
 ];
 
